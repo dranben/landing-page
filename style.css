@@ -1,0 +1,381 @@
+/* ========================
+   dranben portfolio
+   Dark theme, #030515 base
+   ======================== */
+
+:root {
+    --bg-deep: #030515;
+    --bg-card: #0a0e24;
+    --bg-card-hover: #0f1430;
+    --gold: #c8962e;
+    --gold-dim: rgba(200, 150, 46, 0.15);
+    --gold-glow: rgba(200, 150, 46, 0.3);
+    --text-primary: #e8e4dc;
+    --text-secondary: #8a8692;
+    --text-muted: #4a4654;
+    --border: rgba(200, 150, 46, 0.1);
+    --pokemon-red: #ff4444;
+    --pokemon-yellow: #ffd700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ---- Pokemon Redirect Banner ---- */
+.pokemon-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 2px solid var(--pokemon-red);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.pokemon-banner:hover {
+    background: linear-gradient(135deg, #1e1e38 0%, #1a2744 100%);
+    border-bottom-color: var(--pokemon-yellow);
+}
+
+.pokemon-banner strong {
+    color: var(--pokemon-yellow);
+    font-weight: 600;
+}
+
+.banner-icon {
+    font-size: 1.3rem;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ---- Container ---- */
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---- Hero ---- */
+.hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+/* ---- Section Labels ---- */
+.section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    padding-top: 48px;
+}
+
+/* ---- Project Cards ---- */
+.projects {
+    padding-bottom: 20px;
+}
+
+.project-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(200, 150, 46, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: rgba(200, 150, 46, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+/* Aurea card special treatment */
+.aurea-card {
+    border-color: rgba(200, 150, 46, 0.2);
+}
+
+.aurea-card h3 {
+    color: var(--gold);
+}
+
+.card-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    background: var(--gold-dim);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+}
+
+.card-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* ---- Gallery Section ---- */
+.gallery {
+    padding-bottom: 20px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    border-color: rgba(200, 150, 46, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Lightbox */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 5, 21, 0.95);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 40px;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+.lightbox-overlay img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    font-size: 2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    z-index: 201;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+}
+
+.lightbox-close:hover {
+    color: var(--text-primary);
+}
+
+/* ---- Links Section ---- */
+.links {
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+}
+
+.link-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.25s ease;
+}
+
+.link-item:hover {
+    color: var(--text-primary);
+    border-color: rgba(200, 150, 46, 0.2);
+    background: var(--bg-card-hover);
+}
+
+.link-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity 0.25s ease;
+}
+
+.link-item:hover svg {
+    opacity: 1;
+}
+
+/* ---- Footer ---- */
+footer {
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .link-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pokemon-banner {
+        font-size: 0.8rem;
+        padding: 12px 16px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+}
