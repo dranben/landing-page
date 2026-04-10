@@ -102,6 +102,14 @@ body {
     letter-spacing: 0.02em;
 }
 
+.hero-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 8px;
+}
+
 /* ---- Section Labels ---- */
 .section-label {
     font-family: 'JetBrains Mono', monospace;
@@ -112,6 +120,40 @@ body {
     color: var(--text-muted);
     margin-bottom: 24px;
     padding-top: 48px;
+}
+
+/* ---- Video Reel Section ---- */
+.reel {
+    padding-bottom: 20px;
+}
+
+.reel-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.reel-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.reel-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 12px;
+    letter-spacing: 0.05em;
 }
 
 /* ---- Project Cards ---- */
