@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeTracker · case study · Branden Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">dranben<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" class="nav-cta">Résumé ↓</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="cs-head">
+    <a href="index.html#work" class="cs-back">← Selected work</a>
+    <div class="cs-kicker">★ Flagship · Full-stack PWA</div>
+    <h1>LifeTracker</h1>
+    <p class="sub">A progressive web app that pulls health, productivity, and finances into a single momentum score, with an AI read on every day.</p>
+    <div class="proj-foot">
+      <div class="tags"><span>React</span><span>Vite</span><span>TypeScript</span><span>Hono</span><span>Cloudflare Workers</span><span>D1</span><span>PWA</span><span>Claude API</span><span>Google OAuth</span></div>
+    </div>
+  </header>
+
+  <article class="cs-body">
+    <h2>The problem</h2>
+    <p>I was tracking my life across half a dozen apps and spreadsheets, and none of them answered the only question I actually cared about: <b>am I trending up or down?</b> Health, productivity, and money each lived in their own silo, so there was no single read on whether a given week was good or bad.</p>
+
+    <h2>What I built</h2>
+    <p>LifeTracker is a single installable PWA that brings those domains together behind one number: a <b>momentum score</b>. You log the day, and the app rolls everything into a tactical dashboard with high / medium / low momentum states, plus an <b>AI daily analysis</b> that reads the day's data and writes back a short, plain-language summary of what changed and why.</p>
+    <ul>
+      <li>A React + Vite + TypeScript front end, built as an offline-capable PWA.</li>
+      <li>A serverless backend on Cloudflare Workers (Hono) that serves the app and the <b>/api</b> and <b>/auth</b> endpoints, backed by Cloudflare D1.</li>
+      <li>Google OAuth with a signed session cookie; the schema was designed multi-user from day one.</li>
+      <li>The Claude API integrated server-side to generate the automated daily insight.</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <div class="cs-diagram">React + Vite PWA  ──/api──►  Worker (Hono)  ──►  D1 (SQLite)
+   momentum UI                auth · scoring          history
+        │                          │
+   offline cache            Claude API  (daily read)</div>
+    <p>The Worker is the whole backend: it serves the built SPA as static assets and hosts the API, so there's one deploy, one origin, and no separate server to babysit.</p>
+
+    <h2>The hard part</h2>
+    <p>Two things were genuinely hard. First, <b>designing one honest metric</b> across noisy, unrelated domains, so that a good sleep week and a good spending week move the same needle in a way that still feels fair. Second, making the <b>AI daily read</b> actually worth reading: feeding it the right slice of structured data and constraining it so it summarizes the day instead of hallucinating advice.</p>
+
+    <h2>Status</h2>
+    <p>Shipped and in daily private use (currently just me and my wife). It is the most product-shaped thing I've built: real auth, a real database, a real serverless API, and an AI feature that earns its place.</p>
+
+    <p class="cs-note">Private app, so there's no public demo. Happy to walk through the code and the momentum model on a call.</p>
+  </article>
+</div>
+
+<footer>© 2026 Branden Kennedy</footer>
+</body>
+</html>

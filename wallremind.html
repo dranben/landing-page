@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WallRemind · case study · Branden Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">dranben<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" class="nav-cta">Résumé ↓</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="cs-head">
+    <a href="index.html#work" class="cs-back">← Selected work</a>
+    <div class="cs-kicker">Distributed system · Cloud + mobile</div>
+    <h1>WallRemind</h1>
+    <p class="sub">Push a reminder straight to your phone's wallpaper. A small distributed system that spans a Cloudflare Worker, R2, push notifications, and a native Android app.</p>
+    <div class="proj-foot">
+      <div class="tags"><span>Cloudflare Worker</span><span>TypeScript</span><span>R2</span><span>FCM</span><span>Kotlin</span><span>Android</span></div>
+    </div>
+  </header>
+
+  <article class="cs-body">
+    <h2>The idea</h2>
+    <p>The lock screen is the one surface you always see. WallRemind turns it into a reminder channel: any client (including Claude through an MCP tool) posts some text, and a few seconds later it's the wallpaper on my phone.</p>
+
+    <h2>How it works</h2>
+    <ul>
+      <li>A client <b>POSTs reminder text</b> to a Cloudflare Worker.</li>
+      <li>The Worker renders the text into a phone-resolution <b>SVG</b> and stores it in <b>R2</b>.</li>
+      <li>It sends a <b>Firebase Cloud Messaging</b> data message to the registered device.</li>
+      <li>The <b>Android app (Kotlin)</b> fetches the SVG, rasterises it, and calls <span style="font-family:'JetBrains Mono',monospace">WallpaperManager.setBitmap()</span>.</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <div class="cs-diagram">+---------+   POST /reminder   +------------------+   FCM data msg   +--------------+
+| Client  | -----------------> | Cloudflare Worker| ---------------> | Android App  |
+| (MCP)   |                    |  (SVG -> R2)     |                  | (SVG->Bitmap)|
++---------+                    +------------------+                  +------+-------+
+                                       |                                    |
+                                       | GET /wallpaper/&lt;id&gt;.svg             |
+                                       +----------------------------------->+
+                                                                            v
+                                                                   WallpaperManager
+                                                                    .setBitmap()</div>
+
+    <h2>The hard part</h2>
+    <p>This is the project that taught me <b>distributed thinking</b>: state and work are split across a serverless backend, an object store, a push channel, and a phone that's often asleep. Getting the handoff right, generate once and store, notify by reference, fetch and render on device, meant designing for a flaky last mile instead of a clean request/response.</p>
+
+    <h2>Status</h2>
+    <p>Working across the Worker and the Android client. The repo is laid out as <span style="font-family:'JetBrains Mono',monospace">worker/</span> (TypeScript), <span style="font-family:'JetBrains Mono',monospace">android/</span> (Kotlin, FCM, AndroidSVG), and an MCP server that exposes the <span style="font-family:'JetBrains Mono',monospace">set_wallpaper_reminder</span> tool.</p>
+
+    <p class="cs-note">Happy to demo it live, sending a reminder and watching it land on the lock screen, or walk the code.</p>
+  </article>
+</div>
+
+<footer>© 2026 Branden Kennedy</footer>
+</body>
+</html>

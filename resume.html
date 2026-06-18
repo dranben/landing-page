@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Branden Kennedy :Résumé</title>
+<style>
+@page { size: Letter; margin: 0.34in 0.58in; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#1a1a1a;font-size:9.7pt;line-height:1.21;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.accent{color:#274b73}
+header{text-align:center;border-bottom:2px solid #274b73;padding-bottom:7px;margin-bottom:9px}
+h1{font-size:21pt;letter-spacing:.5px;color:#16263a;font-weight:700}
+.title{font-size:11pt;color:#274b73;font-weight:700;margin-top:2px}
+.contact{font-size:9.2pt;color:#444;margin-top:5px}
+.contact a{color:#274b73;text-decoration:none}
+h2{font-size:9.6pt;color:#274b73;text-transform:uppercase;letter-spacing:.8px;
+   border-bottom:1px solid #c9d3df;padding-bottom:2px;margin:6px 0 4px}
+p.summary{font-size:10.2pt;color:#222}
+.skills div{margin-bottom:3px}
+.skills b{color:#16263a}
+.entry{margin-bottom:3px}
+.entry .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.entry .name{font-weight:700;color:#16263a;font-size:10.5pt}
+.entry .tech{color:#5a6573;font-size:9pt;font-style:italic;white-space:nowrap}
+.entry .meta{color:#444;font-size:9.4pt}
+ul{list-style:none;margin:3px 0 0}
+li{position:relative;padding-left:12px;margin-bottom:1.5px;color:#262626}
+li::before{content:'';position:absolute;left:2px;top:6px;width:3px;height:3px;border-radius:50%;background:#274b73}
+.also{font-size:9.6pt;color:#3a3a3a;margin-top:4px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BRANDEN KENNEDY</h1>
+  <div class="title">Full-Stack Software Developer</div>
+  <div class="contact">Eastern NC (US Eastern) &nbsp;·&nbsp; Open to remote or relocation &nbsp;·&nbsp; brandenkenn@gmail.com &nbsp;·&nbsp; <a href="https://dranben.com">dranben.com</a> &nbsp;·&nbsp; <a href="https://github.com/dranben">github.com/dranben</a></div>
+</header>
+
+<h2>Summary</h2>
+<p class="summary">Full-stack developer who designs and ships production web apps end to end: responsive React and TypeScript front ends backed by serverless APIs on Cloudflare Workers, D1, and KV. An AI-native developer who uses LLM coding agents and the Claude API as everyday tools, with seven years of customer-facing work translating complex technical ideas into plain language.</p>
+
+<h2>Core Skills</h2>
+<div class="skills">
+  <div><b>Languages:</b> JavaScript, TypeScript, C#, Python, SQL, HTML, CSS</div>
+  <div><b>Frontend:</b> React, Angular, Vite, responsive design, component-based UIs, progressive web apps</div>
+  <div><b>Backend &amp; Cloud:</b> Node.js, REST APIs, Cloudflare Workers / Pages / D1 / R2 / KV, serverless &amp; distributed systems, Google OAuth</div>
+  <div><b>AI &amp; ML:</b> Claude API, Model Context Protocol (MCP) servers, LLM coding agents, reinforcement learning (PPO / MaskablePPO)</div>
+  <div><b>Practices &amp; Tooling:</b> Git, CI/CD via Cloudflare Pages, DNS &amp; domain configuration, technical documentation</div>
+</div>
+
+<h2>Selected Projects</h2>
+
+<div class="entry">
+  <div class="row"><span class="name">LifeTracker :AI productivity PWA</span><span class="tech">React, Vite, TypeScript · Cloudflare Workers, D1 · Claude API</span></div>
+  <ul>
+    <li>Shipped a full progressive web app end to end: a React/Vite front end on a serverless Worker and D1 backend, behind Google OAuth.</li>
+    <li>Built a momentum scoring system spanning health, productivity, and finances, with the Claude API generating automated daily insights.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">LifeCodex :self-hosted knowledge base</span><span class="tech">React 19 · Cloudflare Workers, D1, R2, KV · MCP</span></div>
+  <ul>
+    <li>Built a Notion-style app around a hand-rolled WYSIWYG editor on native contentEditable (zero editor dependencies) with a round-trip-tested Markdown core.</li>
+    <li>Exposed the workspace to AI through a remote MCP connector (OAuth 2.1 + PKCE), snapshotting prior state on every AI edit for safe, revertible changes.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">Balatro RL Agent :reinforcement learning</span><span class="tech">Python · MaskablePPO · LuaJIT</span></div>
+  <ul>
+    <li>Trained an agent against the real, unmodified game engine across 28 parallel workers; diagnosed and fixed a reward-shaping bug that lifted explained variance from -120% to +71%.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">Twitch Chat RPG :multiplayer game</span><span class="tech">JavaScript · Cloudflare Workers, KV</span></div>
+  <ul>
+    <li>Built catch, marketplace, and battle systems on a full serverless backend for live, multiplayer play inside Twitch chat.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">World of Aurea :commercial RPG, solo</span><span class="tech">Godot 4.6 / C# · worldofaurea.com</span></div>
+  <ul>
+    <li>Architecting a full game solo: custom turn-based battle engine, save/load, scene management, shaders, and asset pipelines; built the React marketing site on Cloudflare Pages.</li>
+  </ul>
+</div>
+
+<p class="also"><b>Also shipped:</b> WallRemind (native Android app + Cloudflare Worker, MCP-triggered) · redline (PySide6 GPU overclock &amp; monitoring suite) · danielbetter.com (freelance React client site, Resend API).</p>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <div class="row"><span class="name">Independent Software Developer</span><span class="meta">Self-Employed · 2024 to Present</span></div>
+  <ul>
+    <li>Design, build, and ship production web apps end to end: React/TypeScript front ends and serverless backends on Cloudflare Workers and D1, deployed through Git-based CI/CD on Cloudflare Pages.</li>
+    <li>Work AI-native, using LLM coding agents and the Claude API as everyday partners for building, debugging, and documentation.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">Wireless Consultant</span><span class="meta">Cellular Sales (Verizon Authorized Retailer), NC · 2019 to 2025</span></div>
+  <ul>
+    <li>Communicated complex technical concepts clearly to non-technical customers; trained and onboarded new team members and shared best practices.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">Customer Consultant</span><span class="meta">Bell's Appliance, NC · 2025 to 2026</span></div>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">Product Specialist</span><span class="meta">DW Nissan, NC · 2018 to 2019</span></div>
+</div>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="row"><span class="name">Bethel School of Technology</span><span class="meta">Technical Certificate, Full-Stack Software Development · 2019 to 2020</span></div>
+  <ul>
+    <li>Capstone: a full web application built in Angular (TypeScript).</li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>redline · case study · Branden Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">dranben<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" class="nav-cta">Résumé ↓</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="cs-head">
+    <a href="index.html#work" class="cs-back">← Selected work</a>
+    <div class="cs-kicker">Desktop · Systems</div>
+    <h1>redline</h1>
+    <p class="sub">An all-in-one GPU overclock, system monitor, RGB control, and stability suite. One desktop app to replace MSI Afterburner plus RivaTuner.</p>
+    <div class="proj-foot">
+      <div class="tags"><span>Python</span><span>PySide6</span><span>NVAPI</span><span>Windows</span></div>
+    </div>
+  </header>
+
+  <article class="cs-body">
+    <h2>The problem</h2>
+    <p>Tuning a GPU usually means juggling two or three separate tools: one for the overclock, one for the on-screen monitor, another for RGB. I wanted a single app that did all of it, so I built one.</p>
+
+    <h2>What I built</h2>
+    <ul>
+      <li>A <b>PySide6</b> desktop application with a live system monitor for clocks, temperatures, and load.</li>
+      <li><b>GPU overclock</b> controls and an RGB control panel in the same interface.</li>
+      <li>A <b>stability suite</b> to push a configuration and watch it hold under load.</li>
+      <li>Direct hardware access through <b>NVAPI</b>, NVIDIA's low-level driver API, called from Python.</li>
+    </ul>
+
+    <h2>The hard part</h2>
+    <p>This was a step outside the web stack and into <b>systems work</b>: reaching the GPU through a low-level, sparsely documented driver API, then keeping a real-time monitor responsive while the card is under stress. It's the project where I learned to talk to hardware instead of HTTP.</p>
+
+    <h2>Status</h2>
+    <p>A personal tool I run on my own machine. It replaced the Afterburner + RivaTuner combo for my day-to-day overclocking and monitoring.</p>
+
+    <p class="cs-note">Private desktop project. I can demo the running app and walk through the NVAPI layer; deeper internals on request.</p>
+  </article>
+</div>
+
+<footer>© 2026 Branden Kennedy</footer>
+</body>
+</html>

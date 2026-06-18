@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balatro RL Agent · case study · Branden Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">dranben<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" class="nav-cta">Résumé ↓</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="cs-head">
+    <a href="index.html#work" class="cs-back">← Selected work</a>
+    <div class="cs-kicker">Machine learning · Reinforcement learning</div>
+    <h1>Balatro RL Agent</h1>
+    <p class="sub">A reinforcement-learning agent that plays full Balatro runs against the real, unmodified game engine, booted headless with no game logic reimplemented.</p>
+    <div class="proj-foot">
+      <div class="tags"><span>Python</span><span>Gymnasium</span><span>MaskablePPO</span><span>LuaJIT</span><span>Behavior cloning</span></div>
+    </div>
+  </header>
+
+  <article class="cs-body">
+    <h2>The idea</h2>
+    <p>Most game-playing agents train against a reimplemented or simplified copy of the game. I wanted the agent to learn against the <b>real thing</b>: the actual, unmodified Balatro Lua source, so the policy never overfits to a fake.</p>
+
+    <h2>What I built</h2>
+    <ul>
+      <li>A harness that <b>boots the real game headless under LuaJIT 2.1</b> with the visuals stripped, driven from Python. No game logic is reimplemented; the harness reads the source but never modifies it.</li>
+      <li>A <b>Gymnasium environment</b> wrapping a full run, all jokers, shop, consumables, boss blinds, vouchers, and packs, with the action layout derived from the game's own source.</li>
+      <li>A <b>MaskablePPO</b> trainer that scaled across <b>28 parallel workers</b>, plus a behavior-cloning warm-start pipeline to bootstrap early policies.</li>
+      <li>A training dashboard (Flask + Chart.js) to watch runs live.</li>
+    </ul>
+
+    <h2>The hard part</h2>
+    <p>The headline debugging win: a <b>reward-shaping bug</b> that I diagnosed and fixed, lifting the model's explained variance from <b>−120% to +71%</b>, the difference between a value function that was actively misleading and one that actually predicted returns.</p>
+    <p>Before any of that, the real challenge was the bridge itself: driving a commercial game engine headless and exposing its sprawling action space to an RL agent cleanly enough to mask illegal moves and decode actions back into the game.</p>
+
+    <h2>Status</h2>
+    <p>A research project I keep iterating on. It's where I do my systems-level Python and machine-learning work, equal parts emulation plumbing and RL.</p>
+
+    <p class="cs-note">The game's Lua source is commercial and not redistributed, so the repo stands alone without it. Glad to walk through the training pipeline and the reward fix.</p>
+  </article>
+</div>
+
+<footer>© 2026 Branden Kennedy</footer>
+</body>
+</html>

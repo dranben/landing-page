@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeCodex · case study · Branden Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">dranben<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" class="nav-cta">Résumé ↓</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="cs-head">
+    <a href="index.html#work" class="cs-back">← Selected work</a>
+    <div class="cs-kicker">Full-stack · Editor · MCP</div>
+    <h1>LifeCodex</h1>
+    <p class="sub">A self-hosted Notion: pages, freeform databases, and saved views, with a hand-rolled editor and a remote connector that lets an AI read and write the whole workspace.</p>
+    <div class="proj-foot">
+      <div class="tags"><span>React 19</span><span>Vite</span><span>TypeScript</span><span>Hono</span><span>D1</span><span>R2</span><span>KV</span><span>Google OAuth</span><span>MCP</span></div>
+    </div>
+  </header>
+
+  <article class="cs-body">
+    <h2>The problem</h2>
+    <p>I wanted Notion's shape, pages, databases, and views, without renting it, and without locking my own notes inside someone else's product. So I built a single-user, cloud-first knowledge base I fully own, where the canonical store is plain Markdown and JSON so an export is always trivial.</p>
+
+    <h2>What I built</h2>
+    <ul>
+      <li>A tree of <b>pages</b> (Markdown documents) and <b>databases</b> (a JSON schema), with <b>entries</b> (rows), saved <b>views</b>, and a <b>revisions</b> trail.</li>
+      <li>A React 19 + Vite + TypeScript front end served by a Cloudflare Worker (Hono), backed by D1 for data, R2 for backups, and KV for tokens.</li>
+      <li>Google OAuth with a signed, revocable session, single-user by design.</li>
+      <li>A <b>remote MCP connector</b> exposing roughly a dozen tools, so Claude can do full CRUD over pages and entries plus search, schema changes, history, and restore.</li>
+      <li>Durability without a second master copy: <b>nightly R2 snapshots</b> plus an on-demand full-JSON export.</li>
+    </ul>
+
+    <h2>The hard part</h2>
+    <p>Two pieces carried the project.</p>
+    <p><b>The editor is hand-rolled on native contentEditable, with zero editor dependencies</b>, no ProseMirror, no BlockNote. The canonical logic is a pair of pure functions, parse and serialize, with a round-trip unit test proving <span style="font-family:'JetBrains Mono',monospace">serialize(parse(x)) === x</span> stays stable. That test is what makes the editor safe to keep extending.</p>
+    <p>The <b>MCP connector</b> is Streamable-HTTP JSON-RPC with full OAuth 2.1 + PKCE and dynamic client registration, KV-backed tokens, and identity tied to the Codex session so only the allowlisted user can authorize. Every AI edit, delete, or schema change <b>snapshots the prior row into revisions first</b>, and deletes are soft, so the AI can never quietly destroy anything.</p>
+
+    <h2>Architecture</h2>
+    <div class="cs-diagram">React 19 SPA ──► Worker (Hono) ──► D1   (pages, entries, views, revisions)
+                      │   ├──► R2   (nightly snapshots, exports)
+                      │   └──► KV   (MCP OAuth tokens)
+   claude.ai  ──/mcp──┘   OAuth 2.1 + PKCE · 1 user · soft deletes</div>
+
+    <h2>Status</h2>
+    <p>Built and self-hosted on Cloudflare. It's a personal workspace, so there's no public login, but it's the deepest single thing I've built: a custom editor, a real auth layer, an AI integration with a safety net, and a backup story across two independent homes.</p>
+
+    <p class="cs-note">Private workspace, no public demo. I'm glad to screen-share the editor internals and the MCP flow.</p>
+  </article>
+</div>
+
+<footer>© 2026 Branden Kennedy</footer>
+</body>
+</html>
