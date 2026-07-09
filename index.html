@@ -169,6 +169,26 @@
 
 <footer>© 2026 Branden Kennedy</footer>
 
+<div class="lightbox" id="lightbox"><img id="lightbox-img" src="" alt=""></div>
+
+<script>
+// Click a "Beyond code" graphic to view it full-size.
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  document.querySelectorAll('.shots img').forEach(function(el){
+    el.addEventListener('click', function(){
+      img.src = el.src;
+      img.alt = el.alt;
+      box.classList.add('open');
+    });
+  });
+  function close(){ box.classList.remove('open'); img.src = ''; }
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
+
 <script>
 // Email is assembled at runtime so it never sits in the raw HTML for scrapers.
 (function(){
