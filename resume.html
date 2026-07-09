@@ -56,6 +56,20 @@ li::before{content:'';position:absolute;left:2px;top:6px;width:3px;height:3px;bo
 <h2>Selected Projects</h2>
 
 <div class="entry">
+  <div class="row"><span class="name">Twitch Chat RPG: multiplayer game</span><span class="tech">JavaScript · Cloudflare Workers, KV</span></div>
+  <ul>
+    <li>A multiplayer game played entirely through Twitch chat — players catch, trade, and battle in real time, with game state on Workers and KV. Live on a partner's channel.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="name">Balatro RL Agent: reinforcement learning</span><span class="tech">Python · MaskablePPO · LuaJIT</span></div>
+  <ul>
+    <li>Trained an agent against the real, unmodified game running headless, across 28 parallel workers. Found and fixed a reward bug that took explained variance from -120% to +71%.</li>
+  </ul>
+</div>
+
+<div class="entry">
   <div class="row"><span class="name">LifeTracker: AI productivity PWA</span><span class="tech">React, Vite, TypeScript · Cloudflare Workers, D1 · Claude API</span></div>
   <ul>
     <li>Built and shipped an installable web app with a React front end, a Cloudflare Workers + D1 backend, and Google sign-in.</li>
@@ -68,20 +82,6 @@ li::before{content:'';position:absolute;left:2px;top:6px;width:3px;height:3px;bo
   <ul>
     <li>Built a Notion-style workspace whose rich-text editor is written from scratch on the browser's contentEditable — no editor libraries — with unit tests proving documents survive the round trip to Markdown and back.</li>
     <li>Added a remote MCP connector (OAuth 2.1 + PKCE) so Claude can read and edit the workspace; every AI change saves a revision first, so nothing can be quietly destroyed.</li>
-  </ul>
-</div>
-
-<div class="entry">
-  <div class="row"><span class="name">Balatro RL Agent: reinforcement learning</span><span class="tech">Python · MaskablePPO · LuaJIT</span></div>
-  <ul>
-    <li>Trained an agent against the real, unmodified game running headless, across 28 parallel workers. Found and fixed a reward bug that took explained variance from -120% to +71%.</li>
-  </ul>
-</div>
-
-<div class="entry">
-  <div class="row"><span class="name">Twitch Chat RPG: multiplayer game</span><span class="tech">JavaScript · Cloudflare Workers, KV</span></div>
-  <ul>
-    <li>A multiplayer game played entirely through Twitch chat — players catch, trade, and battle in real time, with game state on Workers and KV. Live on a partner's channel.</li>
   </ul>
 </div>
 

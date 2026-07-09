@@ -47,18 +47,25 @@
   <div class="wrap">
     <h2 class="sec">Selected work</h2>
 
-    <a href="lifetracker.html" class="featured">
+    <div class="featured">
       <span class="flag">Featured project</span>
-      <h3>LifeTracker: your life on one dashboard</h3>
-      <p class="what">A PWA that pulls health, productivity, and finances into a single momentum score, with an AI read on every day.</p>
-      <p class="hard"><b>The hard part:</b> designing one honest metric across noisy, unrelated domains, then a daily AI summary that turns the day's data into a paragraph worth reading. Full-stack on the edge, with an offline-capable PWA front end.</p>
+      <h3>Pokémon Twitch Chat RPG: a multiplayer RPG that lives in Twitch chat</h3>
+      <p class="what">Catch, trade, and battle other players entirely through chat messages, while a serverless backend holds real-time state for everyone in the channel at once. Live on a partner's channel.</p>
+      <p class="hard"><b>The hard part:</b> multiplayer state with no server of my own and no sockets: every action arrives as a chat message, so concurrent play has to stay consistent on Workers and KV with Twitch's chat protocol and rate limits as the only transport.</p>
       <div class="proj-foot">
-        <div class="tags"><span>React</span><span>Vite</span><span>TypeScript</span><span>Hono</span><span>D1</span><span>PWA</span><span>Claude API</span></div>
-        <div class="links"><span class="plink">Read the case study →</span></div>
+        <div class="tags"><span>Workers</span><span>KV</span><span>Twitch API</span><span>JavaScript</span></div>
+        <div class="links"><a class="plink" href="https://pokemon.dranben.com" target="_blank">Live ↗</a><a class="plink" href="https://github.com/dranben/PokemonTwitchChatRPG" target="_blank">Code ↗</a></div>
       </div>
-    </a>
+    </div>
 
     <div class="proj-grid">
+
+      <a href="balatro.html" class="card">
+        <h3>Balatro RL Agent</h3>
+        <p class="what">A reinforcement-learning agent that plays full Balatro runs against the real, unmodified game engine, booted headless under LuaJIT with no game logic reimplemented.</p>
+        <div class="proj-foot"><div class="tags"><span>Python</span><span>Gymnasium</span><span>MaskablePPO</span><span>LuaJIT</span></div>
+          <div class="links"><span class="plink">Case study →</span></div></div>
+      </a>
 
       <a href="lifecodex.html" class="card">
         <h3>LifeCodex</h3>
@@ -81,13 +88,6 @@
           <div class="links"><span class="plink">Case study →</span></div></div>
       </a>
 
-      <a href="balatro.html" class="card">
-        <h3>Balatro RL Agent</h3>
-        <p class="what">A reinforcement-learning agent that plays full Balatro runs against the real, unmodified game engine, booted headless under LuaJIT with no game logic reimplemented.</p>
-        <div class="proj-foot"><div class="tags"><span>Python</span><span>Gymnasium</span><span>MaskablePPO</span><span>LuaJIT</span></div>
-          <div class="links"><span class="plink">Case study →</span></div></div>
-      </a>
-
       <a href="https://worldofaurea.com" target="_blank" class="card">
         <h3>World of Aurea</h3>
         <p class="what">A solo-dev creature-collector RPG in Godot 4 / C# with a custom turn-based battle engine, save/load, shaders, asset pipelines, and all original pixel art. Steam page live.</p>
@@ -95,12 +95,12 @@
           <div class="links"><span class="plink">Site ↗</span></div></div>
       </a>
 
-      <div class="card">
-        <h3>Pokémon Twitch Chat RPG</h3>
-        <p class="what">A multiplayer RPG that runs entirely in Twitch chat. Catch, battle, and trade while it holds real-time state for many concurrent players on Workers and KV. Live on a partner's channel.</p>
-        <div class="proj-foot"><div class="tags"><span>Workers</span><span>KV</span><span>Twitch API</span></div>
-          <div class="links"><a class="plink" href="https://pokemon.dranben.com" target="_blank">Live ↗</a><a class="plink" href="https://github.com/dranben/PokemonTwitchChatRPG" target="_blank">Code ↗</a></div></div>
-      </div>
+      <a href="lifetracker.html" class="card">
+        <h3>LifeTracker</h3>
+        <p class="what">A PWA that pulls health, productivity, and finances into a single momentum score, with an AI read on every day. Real auth, a real database, and the Claude API on the edge.</p>
+        <div class="proj-foot"><div class="tags"><span>React</span><span>TypeScript</span><span>Hono</span><span>D1</span><span>Claude API</span></div>
+          <div class="links"><span class="plink">Case study →</span></div></div>
+      </a>
 
     </div>
     <a href="https://github.com/dranben?tab=repositories" target="_blank" class="more-link">More on GitHub →</a>
