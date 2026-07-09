@@ -39,9 +39,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(242,234,217,.93);border-bot
 
 /* hero */
 .hero{padding:96px 0 64px}
-.hero h1{font-size:clamp(2.5rem,6vw,3.7rem);font-weight:700;letter-spacing:-.015em;line-height:1.08;margin-bottom:18px}
+.hero h1{font-size:clamp(2.5rem,6vw,3.7rem);font-weight:700;letter-spacing:-.015em;line-height:1.08;margin-bottom:30px}
 .hero h1 .accent{color:var(--green)}
-.hero .lead{font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--ink-soft);max-width:620px;margin-bottom:30px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:.95rem;padding:12px 22px;border-radius:3px;transition:background .2s,border-color .2s;cursor:pointer}
 .btn svg{width:17px;height:17px}
